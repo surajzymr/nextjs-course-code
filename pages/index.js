@@ -3,25 +3,24 @@ import path from "path";
 
 function HomePage(props) {
   const { products } = props;
+  // console.log("PROPS ****", props);
   return (
     <div>
       {products?.map((e) => {
         return (
           <div key={e.id}>
-            <p>{e.title}</p>
+            <ul>
+              <li>{e.title}</li>
+            </ul>
           </div>
         );
       })}
-      {/* <ul>
-        <li>Product 1</li>
-        <li>Product 2</li>
-        <li>Product 3</li>
-      </ul> */}
     </div>
   );
 }
 
 export async function getStaticProps() {
+  console.log("re validating......");
   // below is the path name and structure for it
   const filePath = path.join(process.cwd(), "data", "block-data.json");
   // below is to read the above the file path
@@ -33,6 +32,8 @@ export async function getStaticProps() {
     props: {
       products: data.products,
     },
+    revalidate: 10,
+    // notFound: true
   };
 }
 
