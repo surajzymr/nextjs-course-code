@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
+import Link from "next/link";
 
 function HomePage(props) {
   const { products } = props;
@@ -10,7 +11,7 @@ function HomePage(props) {
         return (
           <div key={e.id}>
             <ul>
-              <li>{e.title}</li>
+              <li> <Link href={ `products/${e.id}`} >{e.title} </Link></li>
             </ul>
           </div>
         );
@@ -20,7 +21,6 @@ function HomePage(props) {
 }
 
 export async function getStaticProps() {
-  console.log("re validating......");
   // below is the path name and structure for it
   const filePath = path.join(process.cwd(), "data", "block-data.json");
   // below is to read the above the file path
