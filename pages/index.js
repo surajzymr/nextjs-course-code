@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 function HomePage() {
   const [emailValue, setValue] = useState();
   const [descvalue, setDescValue] = useState();
+  const [feedbackItems, setFeedbackItems] = useState([]);
   const emailValueRef = useRef();
   const descValueRef = useRef();
   const submitHandler = (event) => {
@@ -22,9 +23,14 @@ function HomePage() {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((response) => response.json());   
+    }).then((response) => response.json());
   };
-
+// below making a GET call, and then retriving and then reiterating the data below.
+  function loadFeedBackData() {
+    fetch("/api/feedback")
+      .then((response) => response.json())
+      .then((data) => setFeedbackItems(data.feedback));
+  }
   return (
     <div>
       <h1>The Home Page</h1>
@@ -41,6 +47,24 @@ function HomePage() {
       <div>
         <p>Email : {emailValue}</p>
         <p>Description: {descvalue}</p>
+      </div>
+      <div>
+        <button onClick={loadFeedBackData}>Load Data</button>
+        {feedbackItems.map((e) => {
+          return (
+            <div >
+              {/* <p>EMAIL : {e.email}</p>
+              <p>EMAIL : {e.email}</p> */}
+              <table key={e.id}>
+              
+                <tr>
+                  <td>{e.email}</td>
+                  <td>{e.text}</td>
+                </tr>
+              </table>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
