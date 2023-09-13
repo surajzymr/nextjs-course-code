@@ -29,10 +29,10 @@ function HomePage() {
     <div>
       <h1>The Home Page</h1>
       <form onSubmit={submitHandler}>
-        <p htmlFor="email">Email Address: </p>
+        <label htmlFor="email">Email Address: </label>
         <input type="email" id="email" ref={emailValueRef} />
         <br />
-        <p htmlFor="text">Description: </p>
+        <label htmlFor="text">Description: </label>
         <input type="text" id="text" ref={descValueRef} />
         <br />
         <br />
