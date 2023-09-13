@@ -14,11 +14,16 @@ function handler(req, res) {
 
     // now to store the above information in the inbuilt json file
     // 1) we create a path for the data to be connected
-    const filePath = path.join(__dirname, "../data/descriptions.json");
+    debugger;
+    const filePath = path.join(process.cwd(), 'data', 'alldata.json');
     // 2) we want to read the above file
     const fileData = fs.readFileSync(filePath);
+    const data = JSON.parse(fileData);
+
     // 3) we need to read the data now in the desired json format
+    
     data.push(newDescription);
+
     // 4) now we nened ot write the above data
     fs.writeFileSync(filePath, JSON.stringify(data));
     // 5) now we need to pass a status message stating that it got updated.
