@@ -53,10 +53,7 @@ function HomePage() {
         {feedbackItems.map((e) => {
           return (
             <div >
-              {/* <p>EMAIL : {e.email}</p>
-              <p>EMAIL : {e.email}</p> */}
               <table key={e.id}>
-              
                 <tr>
                   <td>{e.email}</td>
                   <td>{e.text}</td>
