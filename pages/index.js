@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import Link from "next/link";
 
 function HomePage() {
   const [emailValue, setValue] = useState();
@@ -25,7 +26,7 @@ function HomePage() {
       },
     }).then((response) => response.json());
   };
-// below making a GET call, and then retriving and then reiterating the data below.
+  // below making a GET call, and then retriving and then reiterating the data below.
   function loadFeedBackData() {
     fetch("/api/feedback")
       .then((response) => response.json())
@@ -50,9 +51,12 @@ function HomePage() {
       </div>
       <div>
         <button onClick={loadFeedBackData}>Load Data</button>
+        <Link href={"/feedback"}>
+          <button>FeedBack</button>
+        </Link>
         {feedbackItems.map((e) => {
           return (
-            <div >
+            <div>
               <table key={e.id}>
                 <tr>
                   <td>{e.email}</td>

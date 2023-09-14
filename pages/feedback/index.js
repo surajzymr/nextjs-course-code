@@ -1,4 +1,6 @@
 import { buildFeedbackPath, extractFeedback } from "../api/feedback";
+import Link from "next/link";
+import Router from "next/router";
 
 function FeedbackPage(props) {
   return (
@@ -7,6 +9,9 @@ function FeedbackPage(props) {
       {props.feedbackItems.map((item) => (
         <li key={item.id}>{item.text} </li>
       ))}
+      <Link href={"/"}>
+        <button>HomePage</button>
+      </Link>
     </div>
   );
 }
