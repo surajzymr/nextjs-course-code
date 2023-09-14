@@ -1,11 +1,11 @@
 import fs from "fs";
 import path from "path";
 
-function buildFeedbackPath() {
+export function buildFeedbackPath() {
   return path.join(process.cwd(), "data", "alldata.json");
 }
 
-function extractFeedback(filePath) {
+export function extractFeedback(filePath) {
   const fileData = fs.readFileSync(filePath);
     const data = JSON.parse(fileData);
     return data;
@@ -22,7 +22,7 @@ function handler(req, res) {
     };
     // now to store the above information in the inbuilt json file
     // 1) we create a path for the data to be connected
-   
+    
     const filePath = buildFeedbackPath();
     // 2) we want to read the above file
     const data = extractFeedback(filePath)
