@@ -34,7 +34,7 @@ function HomePage() {
   }
   return (
     <div>
-      <h1>The Home Page</h1>
+      <h1>Home Page</h1>
       <form onSubmit={submitHandler}>
         <label htmlFor="email">Email Address: </label>
         <input type="email" id="email" ref={emailValueRef} />
